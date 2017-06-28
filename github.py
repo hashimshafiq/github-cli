@@ -1,8 +1,7 @@
 from colorama import init, Style, Fore, Back
 from termcolor import colored
-import requests
-import sys, itertools
-import threading,time
+import sys, itertools, threading, time, requests
+from pprint import pprint
 
 class Spinner:
     busy = False
@@ -62,9 +61,14 @@ else:
 
 spinner = Spinner()
 spinner.start()
-print(Fore.GREEN + Style.BRIGHT + Fore.GREEN + "Getting information")
-time.sleep(3)
+print(Fore.YELLOW + Style.BRIGHT + Fore.YELLOW + "Getting information about user ",end='')
+print(Fore.RED + Style.BRIGHT + username)
+url = API_URL + 'users/'+username
+response = requests.get(url)
+data = response.json()
 spinner.stop()
+
+pprint(data)
 
 
 
