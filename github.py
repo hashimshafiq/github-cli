@@ -42,11 +42,11 @@ example = '> python github.py hashimshafiq'
 contribute = "Contribute to this project"
 
 def argumentError():
-	print("Argument Missing")
-	print("Usage:")
-	print(usage)
-	print("Example:")
-	print(example)
+	print(Style.BRIGHT + Fore.RED + "Argument Missing")
+	print(Style.BRIGHT + Fore.YELLOW + "Usage:")
+	print(Style.BRIGHT + Fore.CYAN + usage)
+	print(Style.BRIGHT + Fore.YELLOW + "Example:")
+	print(Style.BRIGHT + Fore.CYAN + example)
 
 
 if(len(sys.argv)==2):
@@ -61,14 +61,24 @@ else:
 
 spinner = Spinner()
 spinner.start()
-print(Fore.YELLOW + Style.BRIGHT + Fore.YELLOW + "Getting information about user ",end='')
+print(Fore.YELLOW + Style.BRIGHT + "Getting information about user ",end='')
 print(Fore.RED + Style.BRIGHT + username)
 url = API_URL + 'users/'+username
 response = requests.get(url)
+if(response.status_code==200):
+	print(Style.BRIGHT + Fore.GREEN + "Successfull...")
+else:
+	print(Style.BRIGHT + Fore.RED + "Failed...")
+	spinner.stop()
+	sys.exit()
+
+
 data = response.json()
 spinner.stop()
 
-pprint(data)
+
+
+
 
 
 
