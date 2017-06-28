@@ -1,5 +1,4 @@
 from colorama import init, Style, Fore, Back
-from termcolor import colored
 import sys, itertools, threading, time, requests
 from pprint import pprint
 from tabulate import tabulate
@@ -106,7 +105,9 @@ if(data['html_url']):
 headers = ["Public Repos","Public Gists","Followers","Following"]
 table = [[data['public_repos'],data['public_gists'],data['followers'],data['following']]]
 
-print(tabulate(table, headers, tablefmt="fancy_grid"))
+print(tabulate(table, headers, tablefmt="fancy_grid",numalign='center'))
+
+
 
 
 
