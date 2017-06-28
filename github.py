@@ -1,6 +1,9 @@
+from colorama import init
+from termcolor import colored
 import requests
 import sys
 
+init()
 API_URL = 'https://api.github.com/'
 
 usage = 'python filename username'
@@ -25,7 +28,7 @@ else:
 	sys.exit()
 
 
-print("Getting information")
+print(colored("Getting information",'green','on_red'))
 
 
 
