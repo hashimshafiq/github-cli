@@ -133,8 +133,13 @@ def getREPODATA(username,reponame):
 		print(Style.BRIGHT+Fore.CYAN +"Github Link: ",end='')
 		print(Style.BRIGHT+data['html_url'])
 	if('parent' in data.keys()):
+		print()
 		print(Style.BRIGHT+Fore.CYAN+"This repo is forked from ",end='')
 		print(Style.BRIGHT+data['parent']['owner']['login'])
+		print(Style.BRIGHT+Fore.CYAN+"Origial Owner: ",end='')
+		print(Style.BRIGHT+data['parent']['owner']['login'])
+		print(Style.BRIGHT+Fore.CYAN+"Original Github Link: ",end='')
+		print(Style.BRIGHT+data['parent']['html_url'])
 	
 	headers = ["Language","Watching","Stars","Forks","Issues","Size (KB)","Default Branch"]
 	table = [[data['language'],data['subscribers_count'],data['stargazers_count'],data['forks_count'],data['open_issues_count'],data['size'],data['default_branch']]]
