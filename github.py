@@ -2,6 +2,7 @@ from colorama import init, Style, Fore, Back
 from termcolor import colored
 import sys, itertools, threading, time, requests
 from pprint import pprint
+from tabulate import tabulate
 
 class Spinner:
     busy = False
@@ -67,14 +68,34 @@ url = API_URL + 'users/'+username
 response = requests.get(url)
 if(response.status_code==200):
 	print(Style.BRIGHT + Fore.GREEN + "Successfull...")
-else:
-	print(Style.BRIGHT + Fore.RED + "Failed...")
+elif(response.status_code==404):
+	print(Style.BRIGHT + Fore.RED + "username not found")
+	spinner.stop()
+	sys.exit()
+elif(response.status_code==403):
+	print(Style.BRIGHT + Fore.RED + "Warning: Maximum Number of Ateempts Limit Crossed")
 	spinner.stop()
 	sys.exit()
 
 
 data = response.json()
 spinner.stop()
+
+if(data['login']):
+	print("\nUsername: "+data['login'])
+if(data['name']):
+	print("Name: "+data['name'])
+if(data['company']):
+	print("Company: "+data['company'])
+if(data['bio']):
+	print("Bio: "+data['bio'])
+if(data['blog']):
+	print("Blog: "+data['blog'])
+if(data['location']):
+	print("Location: "+data['location'])
+if(data['html_url']):
+	print("Github Profile: "+data['html_url'])
+
 
 
 
