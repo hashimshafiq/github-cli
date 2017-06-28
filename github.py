@@ -82,19 +82,31 @@ data = response.json()
 spinner.stop()
 
 if(data['login']):
-	print("\nUsername: "+data['login'])
+	print(Style.BRIGHT+Fore.CYAN + "\nUsername: ",end='')
+	print(Style.BRIGHT+data['login'])
 if(data['name']):
-	print("Name: "+data['name'])
+	print(Style.BRIGHT+Fore.CYAN +"Name: ",end='')
+	print(Style.BRIGHT+data['name'])
 if(data['company']):
-	print("Company: "+data['company'])
+	print(Style.BRIGHT+Fore.CYAN +"Company: ",end='')
+	print(Style.BRIGHT+data['company'])
 if(data['bio']):
-	print("Bio: "+data['bio'])
+	print(Style.BRIGHT+Fore.CYAN +"Bio: ",end='')
+	print(Style.BRIGHT+data['bio'])
 if(data['blog']):
-	print("Blog: "+data['blog'])
+	print(Style.BRIGHT+Fore.CYAN +"Blog: ",end='')
+	print(Style.BRIGHT+data['blog'])
 if(data['location']):
-	print("Location: "+data['location'])
+	print(Style.BRIGHT+Fore.CYAN +"Location: ",end='')
+	print(Style.BRIGHT+data['location'])
 if(data['html_url']):
-	print("Github Profile: "+data['html_url'])
+	print(Style.BRIGHT+Fore.CYAN +"Github Profile: ",end='')
+	print(Style.BRIGHT+data['html_url'])
+
+headers = ["Public Repos","Public Gists","Followers","Following"]
+table = [[data['public_repos'],data['public_gists'],data['followers'],data['following']]]
+
+print(tabulate(table, headers, tablefmt="fancy_grid"))
 
 
 
