@@ -1,2 +1,2 @@
 # github-cli
-GITHUB CLI interface in Python
+A github command line interface written in Python. 
