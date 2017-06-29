@@ -26,6 +26,12 @@ On Windows
 
 `python github.py <username> <reponame>`
 
+On Linux
+
+`python github.py <username>`
+
+`python github.py <username> <reponame>`
+
 __After its development is complete we create a proper package then we dont have to write python before and .py with the file name__
 
 ### Screenshots
