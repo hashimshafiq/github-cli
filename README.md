@@ -30,10 +30,10 @@ __After its development is complete we create a proper package then we dont have
 
 ### Screenshots
 
-![alt text](http://i65.tinypic.com/nqehhv.jpg"Getting user information")
+![alt text](http://i65.tinypic.com/nqehhv.jpg "Getting user information")
 
 
-![alt text](http://i68.tinypic.com/10cknk2.jpg"Getting repo information")
+![alt text](http://i68.tinypic.com/10cknk2.jpg "Getting repo information")
 
 
 
