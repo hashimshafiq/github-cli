@@ -36,6 +36,11 @@ __After its development is complete we create a proper package then we dont have
 ![alt text](http://i68.tinypic.com/10cknk2.jpg "Getting repo information")
 
 
+### Contribute
+
+Just fork the repo, make changes, test and then send the pull request. 
+
+
 
 
 
