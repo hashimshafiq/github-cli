@@ -36,6 +36,7 @@ class Spinner:
 
 init(autoreset=True)
 API_URL = 'https://api.github.com/'
+API_URL_1 = 'https://api.github.com/users/'
 
 usage = 'python github.py <username>\npython github.py <username> <reponame>'
 example = '> python github.py hashimshafiq'
@@ -147,6 +148,50 @@ def getREPODATA(username,reponame):
 
 
 
+
+def getALLREPOS(username):
+	spinner = Spinner()
+	spinner.start()
+	print(Fore.YELLOW + Style.BRIGHT + "Getting information about all repo of user ",end='')
+	print(Fore.RED + Style.BRIGHT + username)
+	count = 0
+	boolean=True
+	while boolean:
+		url = API_URL_1 +username+'/repos'
+		payload = {'type': 'all','page':count,'per_page':100}
+		
+		response = requests.get(url,payload)
+
+		if(response.status_code==200):
+			print(Style.BRIGHT + Fore.GREEN + "Successfull...")
+		elif(response.status_code==404):
+			print(Style.BRIGHT + Fore.RED + "username or repo not found")
+			spinner.stop()
+			sys.exit()
+		elif(response.status_code==403):
+			print(Style.BRIGHT + Fore.RED + "Warning: Maximum Number of Ateempts Limit Crossed")
+			spinner.stop()
+			sys.exit()
+
+		link = response.headers.get('link',None)
+		data = response.json()
+		spinner.stop()
+
+		for d in data:
+			print(d['name'])
+		if link is None:
+			boolean=False
+		count = count + 1
+
+	spinner.stop()
+
+	
+
+
+
+
+
+
 def main():
 	if(len(sys.argv)==2):
 		username = sys.argv[1]
@@ -154,7 +199,10 @@ def main():
 	elif(len(sys.argv)==3):
 		username = sys.argv[1]
 		reponame = sys.argv[2]
-		getREPODATA(username,reponame)
+		if(reponame != '*'):
+			getREPODATA(username,reponame)
+		else:
+			getALLREPOS(username)	
 	else:
 		argumentError()
 		sys.exit()
