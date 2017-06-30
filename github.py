@@ -147,17 +147,21 @@ def getREPODATA(username,reponame):
 
 
 
+def main():
+	if(len(sys.argv)==2):
+		username = sys.argv[1]
+		getUSERDATA(username)
+	elif(len(sys.argv)==3):
+		username = sys.argv[1]
+		reponame = sys.argv[2]
+		getREPODATA(username,reponame)
+	else:
+		argumentError()
+		sys.exit()
+		
 
-if(len(sys.argv)==2):
-	username = sys.argv[1]
-	getUSERDATA(username)
-elif(len(sys.argv)==3):
-	username = sys.argv[1]
-	reponame = sys.argv[2]
-	getREPODATA(username,reponame)
-else:
-	argumentError()
-	sys.exit()
+if __name__ == "__main__":
+	main()
 
 
 
