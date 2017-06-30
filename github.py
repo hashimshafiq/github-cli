@@ -37,7 +37,7 @@ class Spinner:
 init(autoreset=True)
 API_URL = 'https://api.github.com/'
 
-usage = 'python filename username'
+usage = 'python github.py <username>\npython github.py <username> <reponame>'
 example = '> python github.py hashimshafiq'
 contribute = "Contribute to this project"
 
